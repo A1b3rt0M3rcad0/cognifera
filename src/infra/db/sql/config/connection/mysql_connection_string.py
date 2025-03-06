@@ -16,5 +16,5 @@ class MysqlConnectionString(IDatabaseConnectionString):
     @classmethod
     def get_sync_connection_string(cls) -> str:
         if not cls.async_connection_string:
-            raise ValueError("The environment variable 'ASYNC_MYSQL_CONNECTION_STRING' is not set.")
+            raise ValueError("The environment variable 'SYNC_MYSQL_CONNECTION_STRING' is not set.")
         return cls.async_connection_string

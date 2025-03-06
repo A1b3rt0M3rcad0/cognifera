@@ -25,4 +25,4 @@ class AsyncDBConnectionHandler(IAsyncDBConnectionHandler):
         return self
     
     async def __aexit__(self, exc_type, exc_val, exc_tb) -> None:
-        self.session.close()
+        await self.session.close()

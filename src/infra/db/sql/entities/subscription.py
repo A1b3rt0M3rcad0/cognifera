@@ -3,7 +3,7 @@ from src.infra.db.sql.entities.payment import Payment
 from src.infra.db.sql.entities.plan import Plan
 from src.infra.db.sql.entities.user import User
 from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Enum
-from sqlalchemy import func
+from datetime import datetime, timezone
 from sqlalchemy.orm import relationship
 import enum
 
@@ -27,7 +27,7 @@ class Subscription(Base):
     end_date = Column(DateTime, nullable=False)
     usage_limit_date = Column(DateTime, nullable=False)
     status = Column(Enum(Status), nullable=False, default=Status.DEACTIVE)
-    created_at = Column(DateTime, nullable=False, default=func.now)
+    created_at = Column(DateTime, nullable=False, default=datetime.now(timezone.utc))
 
     user = relationship(User, backref=__tablename__)
     plan = relationship(Plan, backref=__tablename__)

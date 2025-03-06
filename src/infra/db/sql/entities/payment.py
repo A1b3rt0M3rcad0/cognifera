@@ -3,7 +3,7 @@ from src.infra.db.sql.entities.user import User
 from src.infra.db.sql.entities.plan import Plan
 from sqlalchemy import Column, String, Integer, DateTime, Float, ForeignKey, Enum
 from sqlalchemy.orm import relationship
-from sqlalchemy import func
+from datetime import datetime, timezone
 import enum
 
 class Status(enum.Enum):
@@ -34,7 +34,7 @@ class Payment(Base):
     failure_reason = Column(String, nullable=False)
     payment_gateway = Column(String, nullable=False)
     payment_date = Column(DateTime, nullable=True)
-    created_at = Column(DateTime, nullable=False, default=func.now)
+    created_at = Column(DateTime, nullable=False, default=datetime.now(timezone.utc))
 
     user = relationship(User, backref=__tablename__)
     plan = relationship(Plan, backref=__tablename__)

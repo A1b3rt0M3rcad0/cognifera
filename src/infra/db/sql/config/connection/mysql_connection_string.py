@@ -3,10 +3,18 @@ import os
 
 class MysqlConnectionString(IDatabaseConnectionString):
 
-    connection_string = os.getenv("MYSQL_CONNECTION_STRING")
+    async_connection_string = os.getenv("ASYNC_MYSQL_CONNECTION_STRING")
+
+    sync_connection_string = os.getenv("SYNC_MYSQL_CONNECTION_STRING")
 
     @classmethod
-    def get_connection_string(cls) -> str:
-        if not cls.connection_string:
-            raise ValueError("The environment variable 'MYSQL_CONNECTION_STRING' is not set.")
-        return cls.connection_string
+    def get_async_connection_string(cls) -> str:
+        if not cls.async_connection_string:
+            raise ValueError("The environment variable 'ASYNC_MYSQL_CONNECTION_STRING' is not set.")
+        return cls.async_connection_string
+    
+    @classmethod
+    def get_sync_connection_string(cls) -> str:
+        if not cls.async_connection_string:
+            raise ValueError("The environment variable 'ASYNC_MYSQL_CONNECTION_STRING' is not set.")
+        return cls.async_connection_string

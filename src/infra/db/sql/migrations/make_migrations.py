@@ -6,12 +6,11 @@ from src.infra.db.sql.entities.subscription import Subscription
 from src.infra.db.sql.entities.usage_stats import UsageStats
 from src.infra.db.sql.entities.user import User
 from src.infra.db.sql.config.interfaces.i_database_connection_string import IDatabaseConnectionString
-from src.infra.db.sql.connection_handler.db_connection_handler import DBConnectionHandler
+from sqlalchemy import create_engine
 
 class Migrations:
 
     @staticmethod
     def make_migrations(connection_string:IDatabaseConnectionString) -> None:
-        db_connection_handler = DBConnectionHandler(connection_string)
-        engine = db_connection_handler.get_engine()
-        Base.metadata.create_all(engine)
+        sync_engine = create_engine(connection_string.get_sync_connection_string())
+        Base.metadata.create_all(sync_engine)

@@ -4,18 +4,8 @@ from src.infra.db.sql.entities.plan import Plan
 from sqlalchemy import Column, String, Integer, DateTime, Float, ForeignKey, Enum
 from sqlalchemy.orm import relationship
 from datetime import datetime, timezone
-import enum
-
-class Status(enum.Enum):
-
-    FINISHED = 'finished'
-    IN_PROGRESS = 'in_progress'
-    CANCELED = 'canceled'
-
-class RefundStatus(enum.Enum):
-
-    REFUNDED = 'refunded'
-    NOT_REFUNDED = 'not_refunded'
+from src.domain.status.payment_status import Status
+from src.domain.status.payment_refund_status import RefundStatus
 
 class Payment(Base):
 

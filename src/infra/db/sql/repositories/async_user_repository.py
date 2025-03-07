@@ -1,7 +1,7 @@
 from sqlalchemy.future import select
 from sqlalchemy import update
 from src.infra.db.sql.interfaces.i_async_db_connection_handler import IAsyncDBConnectionHandler
-from src.data.interfaces.i_aynsc_user_repository import IAsyncUserRepository
+from src.data.interfaces.i_asynsc_user_repository import IAsyncUserRepository
 from src.domain.models.user import User
 from src.infra.db.sql.entities.user import User as UserEntity
 from typing import Dict

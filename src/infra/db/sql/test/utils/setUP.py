@@ -32,7 +32,7 @@ def clear_database(database_url: str) -> None:
 
 def setUP() -> None:
     '''
-    databa_url use TestStringConnection
+    clean database SQLiteConnectionString
     '''
     database_url = SQLiteConnectionString.get_sync_connection_string()
     clear_database(database_url)
